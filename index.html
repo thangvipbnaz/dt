@@ -182,7 +182,7 @@
 <body>
 
 <header class="header"> 
- <video id="headerVideo" class="header-video" playsinline autoplay muted loop controls>
+    <video id="headerVideo" class="header-video" playsinline loop muted>
         <source src="video/meo_den.mp4" type="video/mp4">
         Trình duyệt của bạn không hỗ trợ video.
     </video>
@@ -200,26 +200,37 @@
     </button>
 </header>
 
+<nav class="nav">
+    <a title="Trang Chủ" href="#"><i class="fa-solid fa-house"></i></a>
+    <a href="#">Mua Trực tiếp</a>
+    <a href="#">Mua Online</a>
+    <a href="#">Giỏ Hàng</a>
+    <div class="menu-item">
+        <a href="#">Tiết Kiệm</a>
+        <div class="submenu">
+            <a href="#">Mở Tiết Kiệm</a>
+            <a href="#">Đóng Tiết Kiệm</a>
+        </div>
+    </div>
+</nav>
+
+<a class="blink-text" href="https://www.messenger.com/t/100072768370073">Liên Hệ với Tôi <br> để được tư vấn</a>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     let video = document.getElementById("headerVideo");
     let button = document.getElementById("playButton");
 
-    video.oncanplay = function () {
-        console.log("Video đã tải thành công!");
-    };
+    // Tự động phát video nhưng tắt tiếng để tránh bị chặn
+    video.muted = true;
+    video.loop = true;
+    video.play().catch(error => console.log("Autoplay bị chặn:", error));
 
-    video.onerror = function () {
-        console.log("Lỗi tải video! Kiểm tra đường dẫn hoặc thử URL khác.");
-        // Thử thay thế bằng video trực tuyến nếu video gốc bị lỗi
-        video.innerHTML = '<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">';
-        video.load();
-    };
-
+    // Khi người dùng nhấn vào nút, bật tiếng
     button.addEventListener("click", function () {
         video.muted = false;
         video.play();
-        button.style.display = "none"; 
+        button.style.display = "none"; // Ẩn nút sau khi bật tiếng
     });
 });
 </script>

@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>website bán điện thoại</title>
+    <title>Website Bán Điện Thoại</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
+        /* HEADER */
         .header {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
             padding: 20px;
-            position: relative; /* Quan trọng để giữ video bên trong */
+            position: relative;
             overflow: hidden;
-            height: 200px; /* Điều chỉnh chiều cao của header */
+            height: 200px;
         }
-       .header-video {
-           position: absolute;
-           top: 0;
-           left: 0;
-           width: 100%;
-           height: 100%;
-           object-fit: cover;
-           z-index: -1; /* Đặt video xuống dưới */
-       }
+        .header-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        /* TÌM KIẾM */
         .thang {
             display: flex;
             align-items: center;
@@ -52,6 +56,8 @@
             justify-content: center;
             align-items: center;
         }
+
+        /* NÚT GỌI ĐIỆN */
         .call-btn {
             display: flex;
             flex-direction: column;
@@ -72,27 +78,13 @@
         .call-btn strong {
             color: red;
         }
-        .btn {
-            cursor: pointer;
-            font-size: 24px;
-            background: none;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .btn i {
-            font-size: 28px;
-            color: black;
-        }
 
-        /* NAVIGATION */
+        /* MENU ĐIỀU HƯỚNG */
         .nav {
             background-color: black;
             display: flex;
             align-items: center;
             justify-content: space-around;
-            gap: 30px;
             padding: 10px;
             position: sticky;
             top: 0;
@@ -108,7 +100,9 @@
         .nav a:hover {
             color: #ffcc00;
         }
-        .nav .menu-item {
+
+        /* MENU CON */
+        .menu-item {
             position: relative;
         }
         .submenu {
@@ -129,108 +123,104 @@
         .menu-item:hover .submenu {
             display: block;
         }
+
+        /* NÚT BẬT ÂM THANH */
+        #playButton {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+            border-radius: 5px;
+        }
+        
+        /* LIÊN HỆ NHẤP NHÁY */
         @keyframes blinkColor {
             0% { color: red; }
-            25% { color: black;}
+            25% { color: black; }
             50% { color: yellow; }
             100% { color: red; }
         }
-
         .blink-text {
             font-size: 18px;
             font-weight: bold;
             text-align: center;
             animation: blinkColor 1s infinite alternate;
-            text-decoration: none;
             position: fixed;
-            bottom: 20px;  /* Gắn vào góc dưới màn hình */
+            bottom: 20px;
             right: 20px;
             padding: 12px 20px;
             border-radius: 10px;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1.5;
-            transition: 0.3s ease;
-    }
+            text-decoration: none;
+        }
         .blink-text:hover {
             background-color: red;
-    }
-#playButton {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: red;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 1000;
-    border-radius: 5px;
-}
-
-
+        }
     </style>
 </head>
 <body>
-    <header class="header"> 
-   <video id="headerVideo" class="header-video" playsinline loop muted>
-    <source src="meo_den.mp4" type="video/mp4">
-    Trình duyệt của bạn không hỗ trợ video.
-</video>
 
-<button id="playButton">🔊 Bật Tiếng</button>
+<header class="header"> 
+    <video id="headerVideo" class="header-video" playsinline loop muted>
+        <source src="meo_den.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ video.
+    </video>
 
-        <div class="thang">
-            <input placeholder="Bạn cần tìm gì?" type="search">
-            <button><i title="Tìm Kiếm" class="fa-solid fa-magnifying-glass"></i></button>
+    <button id="playButton">🔊 Bật Tiếng</button>
+
+    <div class="thang">
+        <input placeholder="Bạn cần tìm gì?" type="search">
+        <button><i title="Tìm Kiếm" class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <button class="call-btn">
+        <i title="Gọi Ngay" class="fa-solid fa-phone"></i> 
+        Gọi mua hàng <br><strong>0123456789</strong>
+    </button>
+</header>
+
+<nav class="nav">
+    <a title="Trang Chủ" href="#"><i class="fa-solid fa-house"></i></a>
+    <a href="#">Mua Trực tiếp</a>
+    <a href="#">Mua Online</a>
+    <a href="#">Giỏ Hàng</a>
+    <div class="menu-item">
+        <a href="#">Tiết Kiệm</a>
+        <div class="submenu">
+            <a href="#">Mở Tiết Kiệm</a>
+            <a href="#">Đóng Tiết Kiệm</a>
         </div>
-        <button class="call-btn">
-            <i title="Gọi Ngay" class="fa-solid fa-phone"></i> 
-            Gọi mua hàng <br><strong>0123456789</strong>
-        </button>
-        <button title="Đăng Nhập" class="btn">
-            <i class="fa-solid fa-user"></i>
-        </button>
-        <script>document.addEventListener("DOMContentLoaded", function() {
-    let video = document.getElementById("headerVideo");
+    </div>
+</nav>
 
-    // Tự động phát video có tiếng
-    video.muted = false;
+<a class="blink-text" href="https://www.messenger.com/t/100072768370073">Liên Hệ với Tôi <br> để được tư vấn</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let video = document.getElementById("headerVideo");
+    let button = document.getElementById("playButton");
+
+    // Tự động phát video nhưng tắt tiếng để tránh bị chặn
+    video.muted = true;
     video.loop = true;
     video.play().catch(error => console.log("Autoplay bị chặn:", error));
 
-    // Xử lý lỗi (nếu video bị dừng, load lại)
-    video.addEventListener("error", function() {
-        video.load();
+    // Khi người dùng nhấn vào nút, bật tiếng
+    button.addEventListener("click", function () {
+        video.muted = false;
         video.play();
+        button.style.display = "none"; // Ẩn nút sau khi bật tiếng
     });
 });
 </script>
-    </header>
-
-    <nav class="nav">
-        <a title="Trang Chủ" href="#"><i class="fa-solid fa-house"></i></a>
-        <a href="#">Mua Trực tiếp</a>
-        <a href="#">Mua Online</a>
-        <a href="#">Giỏ Hàng</a>
-        <div class="menu-item">
-            <a href="#">Tiết Kiệm</a>
-            <div class="submenu">
-                <a href="#">Mở Tiết Kiệm</a>
-                <a href="#">Đóng Tiết Kiệm</a>
-            </div>
-        </div>
-    </nav>
-    <a class="blink-text" href="https://www.messenger.com/t/100072768370073">Liên Hệ với Tôi <br> để được tư vấn</a>
-    
-
-
-
 
 </body>
 </html>

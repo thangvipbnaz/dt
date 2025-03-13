@@ -159,40 +159,31 @@
         .blink-text:hover {
             background-color: red;
     }
+#playButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+}
 
 
     </style>
 </head>
 <body>
     <header class="header"> 
-    <video id="headerVideo" class="header-video" loop>
-    <source src="https://thangvipbnaz.github.io/dt/meo_den.mp4" type="video/mp4">
+   <video id="headerVideo" class="header-video" playsinline loop muted>
+    <source src="meo_den.mp4" type="video/mp4">
     Trình duyệt của bạn không hỗ trợ video.
 </video>
 
-<button id="playButton">Bật Tiếng</button>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let video = document.getElementById("headerVideo");
-        let button = document.getElementById("playButton");
-
-        video.muted = true; // Ban đầu tắt tiếng để trình duyệt không chặn
-        video.play();
-
-        button.addEventListener("click", function() {
-            video.muted = false; // Bật tiếng
-            video.play();
-            button.style.display = "none"; // Ẩn nút khi đã bật tiếng
-        });
-
-        // Nếu video bị lỗi, thử phát lại
-        video.addEventListener("error", function() {
-            video.load();
-            video.play();
-        });
-    });
-</script>
+<button id="playButton">🔊 Bật Tiếng</button>
 
         <div class="thang">
             <input placeholder="Bạn cần tìm gì?" type="search">
@@ -205,6 +196,21 @@
         <button title="Đăng Nhập" class="btn">
             <i class="fa-solid fa-user"></i>
         </button>
+        <script>document.addEventListener("DOMContentLoaded", function() {
+    let video = document.getElementById("headerVideo");
+
+    // Tự động phát video có tiếng
+    video.muted = false;
+    video.loop = true;
+    video.play().catch(error => console.log("Autoplay bị chặn:", error));
+
+    // Xử lý lỗi (nếu video bị dừng, load lại)
+    video.addEventListener("error", function() {
+        video.load();
+        video.play();
+    });
+});
+</script>
     </header>
 
     <nav class="nav">

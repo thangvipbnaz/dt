@@ -183,7 +183,8 @@
 
 <header class="header"> 
     <video id="headerVideo" class="header-video" playsinline loop muted>
-        <source src="video/meo_den.mp4" type="video/mp4">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+
         Trình duyệt của bạn không hỗ trợ video.
     </video>
 
@@ -216,23 +217,27 @@
 
 <a class="blink-text" href="https://www.messenger.com/t/100072768370073">Liên Hệ với Tôi <br> để được tư vấn</a>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+</script>
+<script>document.addEventListener("DOMContentLoaded", function () {
     let video = document.getElementById("headerVideo");
     let button = document.getElementById("playButton");
 
-    // Tự động phát video nhưng tắt tiếng để tránh bị chặn
+    video.onerror = function () {
+        console.error("Lỗi: Không thể tải video. Kiểm tra đường dẫn hoặc định dạng.");
+        alert("Không thể tải video! Kiểm tra đường dẫn hoặc thử URL khác.");
+    };
+
     video.muted = true;
     video.loop = true;
     video.play().catch(error => console.log("Autoplay bị chặn:", error));
 
-    // Khi người dùng nhấn vào nút, bật tiếng
     button.addEventListener("click", function () {
         video.muted = false;
         video.play();
-        button.style.display = "none"; // Ẩn nút sau khi bật tiếng
+        button.style.display = "none";
     });
 });
+</script>
 </script>
 
 </body>

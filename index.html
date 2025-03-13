@@ -165,22 +165,34 @@
 </head>
 <body>
     <header class="header"> 
-       <video id="headerVideo" class="header-video" loop>
+    <video id="headerVideo" class="header-video" loop>
     <source src="https://thangvipbnaz.github.io/dt/meo_den.mp4" type="video/mp4">
     Trình duyệt của bạn không hỗ trợ video.
 </video>
 
+<button id="playButton">Bật Tiếng</button>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         let video = document.getElementById("headerVideo");
-        video.muted = false;  // Bật âm thanh
-        video.play().catch(error => {
-            console.log("Trình duyệt chặn phát tự động có tiếng:", error);
+        let button = document.getElementById("playButton");
+
+        video.muted = true; // Ban đầu tắt tiếng để trình duyệt không chặn
+        video.play();
+
+        button.addEventListener("click", function() {
+            video.muted = false; // Bật tiếng
+            video.play();
+            button.style.display = "none"; // Ẩn nút khi đã bật tiếng
+        });
+
+        // Nếu video bị lỗi, thử phát lại
+        video.addEventListener("error", function() {
+            video.load();
+            video.play();
         });
     });
 </script>
-
-
 
         <div class="thang">
             <input placeholder="Bạn cần tìm gì?" type="search">

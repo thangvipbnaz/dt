@@ -37,12 +37,17 @@
             overflow: hidden;
             width: 300px;
             height: 50px;
+            background: rgba(255, 255, 255, 0.2); /* Nền mờ hơn để video nổi lên */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Viền mờ */
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ nền */
+    transition: 0.3s ease;
         }
         .thang input {
             border: none;
             padding: 8px;
             width: 240px;
             outline: none;
+            background: transparent; /* N%E1%BB%81n trong su%E1%BB%91t */    color: white; /* Ch%E1%BB%AF m%C3%A0u tr%E1%BA%AFng cho d%E1%BB%85 nh%C3%ACn */    border: none;    outline: none;
         }
         .thang button {
             background: black;
@@ -69,7 +74,15 @@
             background: white;
             cursor: pointer;
             font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: 0.3s ease;
         }
+        .thang:hover, .call-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
         .call-btn i {
             font-size: 24px;
             margin-bottom: 5px;
@@ -170,7 +183,7 @@
 
 <header class="header"> 
     <video id="headerVideo" class="header-video" playsinline loop muted>
-        <source src="meo_den.mp4" type="video/mp4">
+        <source src="video/meo_den.mp4" type="video/mp4">
         Trình duyệt của bạn không hỗ trợ video.
     </video>
 

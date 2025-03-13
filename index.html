@@ -165,10 +165,21 @@
 </head>
 <body>
     <header class="header"> 
-        <video class="header-video" controls loop playsinline>
+       <video id="headerVideo" class="header-video" loop>
     <source src="https://thangvipbnaz.github.io/dt/meo_den.mp4" type="video/mp4">
     Trình duyệt của bạn không hỗ trợ video.
 </video>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let video = document.getElementById("headerVideo");
+        video.muted = false;  // Bật âm thanh
+        video.play().catch(error => {
+            console.log("Trình duyệt chặn phát tự động có tiếng:", error);
+        });
+    });
+</script>
+
 
 
         <div class="thang">
